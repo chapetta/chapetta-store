@@ -3,7 +3,7 @@ import { UserButtons } from './userButtons';
 
 export const Header = () => {
   return (
-    <header className='flex sticky top-0 shadow-xl shadow-slate-400 bg-slate-950 text-slate-200 px-9 py-4 items-end justify-between text-base z-10 '>
+    <header className='flex sticky top-0 shadow-xl shadow-slate-400 bg-slate-950 text-slate-200 px-9 py-4 items-end justify-between text-xl z-10 '>
       <a href="/home"><img className='h-16 px-2' src={logo} alt="imagem de logo"  /></a>
       <UserButtons />
     </header>
