@@ -1,5 +1,7 @@
-export const HomePage = () => {
+import { MainSection } from "./MainSection";
+
+export const Home = () => {
     return (
-        <div>HomePage</div>
+        <MainSection />
     );
 };

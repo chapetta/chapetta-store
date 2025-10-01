@@ -1,11 +1,12 @@
 import { Header } from "./components/Header"
+import { Home } from "./pages/HomePage/HomePage"
 
 function App() {
 
   return (
     <>
       <Header />
-      <h1 className='text-3xl font-bold'>Titulo da minha pagina</h1>
+      <Home />
     </>
   )
 }
