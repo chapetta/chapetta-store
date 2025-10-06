@@ -1,9 +1,11 @@
-import { useState } from "react";
+
+import { useCart } from "../../UseHooks/UseCart";
 
 
 export const CartOverlay = () => {
 
-  const [isCartOpen, setIsCartOpen] = useState(true)
+  const {isCartOpen, setIsCartOpen} = useCart()
+
     return (
         <div className={`h-screen w-screen fixed top-0 left-0 flex z-11 ease-in-out duration-200 ${isCartOpen ? 'translate-x-0': 'translate-x-full'}`}>
           <section 
