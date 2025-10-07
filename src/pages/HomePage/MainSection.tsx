@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { ProductsContainer } from "./ProductsContainer";
 import { CategorieContext } from "../../contexts/CategoriesContext";
+import { InputSearch } from "../../components/InputSearch";
 
 export const MainSection = () => {
 
@@ -8,7 +9,7 @@ export const MainSection = () => {
   const [selectedCategorie, setSelectedCategorie] = useState('')
 
   return (
-    <main className="flex">
+    <main className="grid grid-cols-[240px_1fr]">
       <aside className=" p-4 w-60 min-h-[100vh] sticky top-0 text-black flex flex-col gap-5 border-3">
         <h2>Categorias:</h2>
         <nav>
@@ -31,7 +32,10 @@ export const MainSection = () => {
           }</ul>
         </nav>
       </aside>
-      <ProductsContainer />
+      <section>
+        <InputSearch />
+        <ProductsContainer />
+      </section>
     </main>
   );
 };
