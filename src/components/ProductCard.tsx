@@ -10,7 +10,7 @@ type ProductCard = {
   price: number
 }
 
-export const ProductCard = ({ id, name, brand, image, feminine, price }: ProductCard) => {
+export const ProductCard = ({ id, name, brand, image, price }: ProductCard) => {
   return (
     <article className="card-produto group w-48 bg-stone-100 shadow-xl shadow-slate-200 flex flex-col justify-around border-2 border-gray-200 rounded-lg ">
       <img

@@ -11,10 +11,11 @@ export const CartOverlay = () => {
           <section 
           className="w-3/4 bg-slate-950 opacity-50"
           onClick={() => setIsCartOpen(false)}
-          ></section>
-          <section className="w-1/4 bg-slate-950 min-w-96 border-l-4 border-slater-400 ps-5 flex flex-col justify-between text-white" 
-          
           >
+          </section>
+          <section className="w-1/4 bg-slate-950 min-w-96 border-l-4 border-slater-400 ps-5 flex flex-col justify-between text-white" 
+          >
+             <h3>Seu carrinho esta vazio</h3>
           </section>
 
         </div>
