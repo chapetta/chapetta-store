@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { getCategories, getProducts, getProductsFromQuery } from './services/api'
 import { CategorieContext } from './contexts/CategoriesContext'
 import { ProductContext } from './contexts/ProductContext'
+import type { Products } from './types/ProductTypes'
 function App() {
 
   const [isCartOpen, setIsCartOpen] = useState(false)
@@ -42,11 +43,19 @@ function App() {
     setLoading(false)
   }
 
+  const handleSearchForCategory = async (category:string) => {
+    const productsList = await getProducts()
+
+     const newListByCategory =  productsList.filter((item: Products) => item.category === category)
+
+     setProducts(newListByCategory)
+  }
+
   return (
     <>
     <ProductContext.Provider value={{products, handleButtonSearch, loading }}>
       <cartContext.Provider value={{ isCartOpen, setIsCartOpen }}>
-        <CategorieContext.Provider value={{ listCategories }}>
+        <CategorieContext.Provider value={{ listCategories,handleSearchForCategory }}>
           <Router />
         </CategorieContext.Provider>
       </cartContext.Provider>
