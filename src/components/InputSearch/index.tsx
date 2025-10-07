@@ -3,7 +3,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 export const InputSearch = () => {
   return (
-    <div className="flex m-0 justify-center m-20">
+    <div className="flex justify-center m-20">
 
       <label htmlFor="search" className="flex  justify-center">
         <input

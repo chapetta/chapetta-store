@@ -1,4 +1,13 @@
 
+export async function getProducts () {
+  const URL_base = 'https://fakestoreapi.com/products'
+
+  const response = await fetch(URL_base)
+  const data = await response.json()
+
+  return data
+}
+
 export async function getCategories() {
   const URL_BASE = 'https://fakestoreapi.com/products/categories'
 
