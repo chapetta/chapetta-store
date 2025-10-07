@@ -1,3 +1,4 @@
+import type { Products } from "../types/ProductTypes"
 
 export async function getProducts () {
   const URL_base = 'https://fakestoreapi.com/products'
@@ -19,25 +20,21 @@ export async function getCategories() {
 }
 
 export async function getProductsFromQuery(query: string) {
-  const URL = `http://localhost:3001/api/search?q=${query}`;
+  const URL = 'https://fakestoreapi.com/products';
 
-  try {
+  const response = await fetch(URL)
+  const data = await response.json()
+  console.log(data, 'DATA DA API')
 
-    const response = await fetch(URL);
+  const filteredProduct = data.filter((product: Products) => {
+    console.log(product.title.toLocaleLowerCase().includes(query.toLocaleLowerCase()))
+    return product.title.toLowerCase().includes(query.toLocaleLowerCase())
+  })
 
-    if (!response.ok) {
-      console.error("Erro HTTP:", response.status, response.statusText);
-      return [];
-    }
+  console.log(filteredProduct, 'PRODUTO FILTRADO');
+  
 
-    const data = await response.json();
-
-    return data || [];
-    
-  } catch (error) {
-    console.error("Erro ao buscar produtos:", error);
-    return [];
-  }
+  return filteredProduct
 }
 
 export async function getProductsFromCategoryAndQuery(categoryId: number, query: string) {

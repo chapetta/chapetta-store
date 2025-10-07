@@ -6,8 +6,6 @@
   "scripts": {
     "dev": "vite --open",
     "build": "tsc -b && vite build",
-    "backend": "nodemon Backend/server.js",
-    "start": "concurrently \"npm run backend\" \"npm run dev\"",
     "lint": "eslint .",
     "preview": "vite preview"
   },

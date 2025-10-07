@@ -29,6 +29,7 @@ function App() {
   const handleButtonSearch = async (query: string) => {
     
     const getProductsFromInputSearch = await getProductsFromQuery(query)
+    console.log(getProductsFromInputSearch)
     setProducts(getProductsFromInputSearch)
   }
 
