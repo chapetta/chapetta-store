@@ -1,5 +1,7 @@
 import { createContext } from "react";
 
+
+
 interface CartContextType {
   isCartOpen: boolean;
   setIsCartOpen: (value: boolean) => void
