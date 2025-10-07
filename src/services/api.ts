@@ -19,13 +19,12 @@ export async function getCategories() {
 }
 
 export async function getProductsFromQuery(query: string) {
-  // Corrige a URL (adiciona q=)
-  const URL = `https://corsproxy.io/?https://api.mercadolibre.com/sites/MLB/search?q=${query}`;
+  const URL = `http://localhost:3001/api/search?q=${query}`;
 
   try {
+
     const response = await fetch(URL);
 
-    // Se der erro de autorização, retorna lista vazia
     if (!response.ok) {
       console.error("Erro HTTP:", response.status, response.statusText);
       return [];
@@ -33,8 +32,8 @@ export async function getProductsFromQuery(query: string) {
 
     const data = await response.json();
 
-    // A API retorna um objeto com .results (não um array direto)
-    return data.results || [];
+    return data || [];
+    
   } catch (error) {
     console.error("Erro ao buscar produtos:", error);
     return [];
