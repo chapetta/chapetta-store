@@ -17,7 +17,12 @@ export interface Products {
 }
 
 export interface ProductsContextType {
-  products: Products[]
+  products: Products[];
+  handleButtonSearch: (query: string) => Promise<void>
 }
 
-export const ProductContext = createContext<ProductsContextType>({products: []})
+export const ProductContext = createContext<ProductsContextType>({
+  products: [],
+   handleButtonSearch: async () => {}
+  
+  })

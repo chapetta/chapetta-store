@@ -1,7 +1,7 @@
 import { Router } from './routes'
 import { cartContext } from './contexts/CartContext'
 import { useEffect, useState } from 'react'
-import { getCategories, getProducts } from './services/api'
+import { getCategories, getProducts, getProductsFromQuery } from './services/api'
 import { CategorieContext } from './contexts/CategoriesContext'
 import { ProductContext } from './contexts/ProductContext'
 function App() {
@@ -26,9 +26,15 @@ function App() {
     fetchProducts()
   }, [])
 
+  const handleButtonSearch = async (query: string) => {
+    
+    const getProductsFromInputSearch = await getProductsFromQuery(query)
+    setProducts(getProductsFromInputSearch)
+  }
+
   return (
     <>
-    <ProductContext.Provider value={{products}}>
+    <ProductContext.Provider value={{products, handleButtonSearch }}>
       <cartContext.Provider value={{ isCartOpen, setIsCartOpen }}>
         <CategorieContext.Provider value={{ listCategories }}>
           <Router />
