@@ -1,6 +1,6 @@
 
 export async function getCategories() {
-  const URL_BASE = 'https://api.mercadolibre.com/sites/MLB/categories'
+  const URL_BASE = 'https://fakestoreapi.com/products/categories'
 
   const response = await fetch(URL_BASE)
   const data = await response.json()

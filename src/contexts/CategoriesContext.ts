@@ -1,12 +1,8 @@
 import { createContext } from "react";
 
-type Categorie = {
-  id: string;
-  name: string
-}
 
 interface CategoriesContext {
-  listCategories: Categorie[]
+  listCategories: string[]
 }
 
 export const CategorieContext = createContext<CategoriesContext>({listCategories: []})
