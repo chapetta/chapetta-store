@@ -9,33 +9,42 @@ function App() {
   const [isCartOpen, setIsCartOpen] = useState(false)
   const [listCategories, setListCategories] = useState([])
   const [ products, setProducts] = useState([])
+  const [ loading, setLoading ] = useState(false)
 
 
   useEffect(() => {
-    const fetchCategories = async () => {
-      const data = await getCategories()
-      console.log(data)
-      setListCategories(data)
-    }
+  const fetchInitialData = async () => {
+    setLoading(true);
+    const [categories, products] = await Promise.all([
+      getCategories(),
+      getProducts(),
+    ]);
 
-    const fetchProducts =  async () => {
-      const data = await getProducts()
-      setProducts(data)
-    }
-    fetchCategories()
-    fetchProducts()
-  }, [])
+    await new Promise((r) => setTimeout(r, 1000));
+
+    setListCategories(categories);
+    setProducts(products);
+    setLoading(false);
+  };
+
+  fetchInitialData();
+}, []);
 
   const handleButtonSearch = async (query: string) => {
-    
+    setLoading(true)
+
     const getProductsFromInputSearch = await getProductsFromQuery(query)
-    console.log(getProductsFromInputSearch)
-    setProducts(getProductsFromInputSearch)
+    const delay = new Promise((resolve) => setTimeout(resolve,1000))
+
+    const [results] = await Promise.all([getProductsFromInputSearch, delay])
+
+    setProducts(results)
+    setLoading(false)
   }
 
   return (
     <>
-    <ProductContext.Provider value={{products, handleButtonSearch }}>
+    <ProductContext.Provider value={{products, handleButtonSearch, loading }}>
       <cartContext.Provider value={{ isCartOpen, setIsCartOpen }}>
         <CategorieContext.Provider value={{ listCategories }}>
           <Router />

@@ -2,10 +2,13 @@ import { useContext, useState } from "react";
 import { ProductsContainer } from "./ProductsContainer";
 import { CategorieContext } from "../../contexts/CategoriesContext";
 import { InputSearch } from "../../components/InputSearch";
+import { Loading } from "../../components/Loading";
+import { ProductContext } from "../../contexts/ProductContext";
 
 export const MainSection = () => {
 
-  const { listCategories } = useContext(CategorieContext)
+  const { listCategories  } = useContext(CategorieContext)
+    const { loading } = useContext(ProductContext)
   const [selectedCategorie, setSelectedCategorie] = useState('')
 
   return (
@@ -34,7 +37,9 @@ export const MainSection = () => {
       </aside>
       <section>
         <InputSearch />
+        {loading ? <Loading /> :
         <ProductsContainer />
+        }
       </section>
     </main>
   );

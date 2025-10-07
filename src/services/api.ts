@@ -24,14 +24,12 @@ export async function getProductsFromQuery(query: string) {
 
   const response = await fetch(URL)
   const data = await response.json()
-  console.log(data, 'DATA DA API')
 
   const filteredProduct = data.filter((product: Products) => {
     console.log(product.title.toLocaleLowerCase().includes(query.toLocaleLowerCase()))
     return product.title.toLowerCase().includes(query.toLocaleLowerCase())
   })
 
-  console.log(filteredProduct, 'PRODUTO FILTRADO');
   
 
   return filteredProduct
