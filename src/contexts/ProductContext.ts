@@ -1,6 +1,6 @@
 import { createContext } from "react";
 
-type Rating = {
+export type Rating = {
   rate: number;
   count: number;
 }
