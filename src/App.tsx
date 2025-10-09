@@ -11,6 +11,7 @@ function App() {
   const [listCategories, setListCategories] = useState([])
   const [ products, setProducts] = useState([])
   const [ loading, setLoading ] = useState(false)
+  // const [ cartList, setCartList ] = useState([])
 
 
   useEffect(() => {
@@ -51,11 +52,20 @@ function App() {
      setProducts(newListByCategory)
   }
 
+  const handleButtonAddToCart = (product: Products) => {
+
+
+    console.log(product)
+
+    
+  }
+
+
   return (
     <>
     <ProductContext.Provider value={{products, handleButtonSearch, loading }}>
-      <cartContext.Provider value={{ isCartOpen, setIsCartOpen }}>
-        <CategorieContext.Provider value={{ listCategories,handleSearchForCategory }}>
+      <cartContext.Provider value={{ isCartOpen, setIsCartOpen, handleButtonAddToCart }}>
+        <CategorieContext.Provider value={{ listCategories, handleSearchForCategory }}>
           <Router />
         </CategorieContext.Provider>
       </cartContext.Provider>
