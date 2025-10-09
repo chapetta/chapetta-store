@@ -7,6 +7,7 @@ interface CartContextType {
   isCartOpen: boolean;
   setIsCartOpen: (value: boolean) => void
   handleButtonAddToCart: (product: Products) => void
+  cartList: Products[] 
 
 
 }
