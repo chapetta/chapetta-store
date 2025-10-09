@@ -18,7 +18,13 @@ export const ProductCard = ({ id, title, price, description, category, image, ra
       <p className="mx-4 text-sm  text-green-700 ">${price}</p>
       <p className="mx-4 text-sm line-clamp-1">{description}</p>
       <StarRateContainer rating={rating}/>
-      <button className="bg-slate-950 rounded-md mx-4 my-1 text-slate-100 hover:bg-slate-800">
+      <button 
+      className="bg-slate-950 rounded-md mx-4 my-1 text-slate-100 hover:bg-slate-800"
+      onClick={(event) => {
+        event.preventDefault();
+        event.stopPropagation();
+      }}
+      >
         <FontAwesomeIcon icon={faCartPlus} />
       </button>
     </article>
