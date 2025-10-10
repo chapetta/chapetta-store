@@ -100,6 +100,21 @@ function App() {
     )
   }
 
+  const handleButtonRemoveQuantity = (id: number) => {
+    setCartList((prevCart) => {
+      const existingProduct = cartList.find((item) => item.id === id)
+
+  
+        if (existingProduct && existingProduct.quantity === 1) {
+          return prevCart.filter((item) => item.id !== id)
+        }
+        return prevCart.map((item) => {
+          return item.id === id ? {...item, quantity: item.quantity -1} : item
+        })
+    }
+    )
+  }
+
   const getTotalValueCart = () => {
     let totalValue = 0
 
@@ -117,8 +132,14 @@ function App() {
     <>
       <ProductContext.Provider value={{ products, handleButtonSearch, loading }}>
         <cartContext.Provider value={{
-          isCartOpen, setIsCartOpen, handleButtonAddToCart, cartList, handleButtonAddQuantity, quantity,
-          getTotalValueCart
+          isCartOpen,
+          setIsCartOpen,
+          handleButtonAddToCart,
+          cartList,
+          handleButtonAddQuantity,
+          quantity,
+          getTotalValueCart,
+          handleButtonRemoveQuantity
         }}>
           <CategorieContext.Provider value={{ listCategories, handleSearchForCategory }}>
             <Router />
