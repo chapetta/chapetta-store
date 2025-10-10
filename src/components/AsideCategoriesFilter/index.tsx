@@ -8,7 +8,7 @@ export const AsideCategoriesFilter = ({ listCategories, handleSearchForCategory 
   const [selectedCategorie, setSelectedCategorie] = useState('')
 
   return (
-    <aside className=" p-4 w-60 min-h-[100vh] sticky top-0 text-black flex flex-col gap-5 border-3 my-10 mx-10">
+    <aside className=" p-4 w-60 h-[500px] text-black flex flex-col gap-5 border-3 my-10 mx-10">
       <h2>Categorias:</h2>
       <nav>
         <ul>{
