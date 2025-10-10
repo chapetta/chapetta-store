@@ -1,6 +1,6 @@
 import { MainSection } from "./MainSection";
 
-export const Home = () => {
+export const HomePage = () => {
     return (
       <>
         <MainSection />
