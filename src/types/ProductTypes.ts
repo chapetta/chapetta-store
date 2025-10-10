@@ -11,5 +11,6 @@ export type Products = {
   category: string;
   image: string;
   rating: Rating;
+  quantity: number;
 
 }

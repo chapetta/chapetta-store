@@ -54,17 +54,45 @@ function App() {
 
   const handleButtonAddToCart = (product: Products) => {
 
+  
+    setCartList((prevCart) => {
+      const existingProduct = prevCart.find((item) => item.id === product.id)
 
-    setCartList((prevCart) => [...prevCart, product])
+      if (existingProduct) {
+        return prevCart.map((item) => {
+         return item.id === product.id ? 
+         {...item, quantity: item.quantity +1} : item
+        })
+      }
 
+      console.log(existingProduct , 'exiting products aqui');
+      console.log(prevCart, 'prev cart aqui');
+      
+      
+      return [...prevCart, {...product, quantity: 1}]
+    })
+
+    console.log(cartList, 'cartlist aqui');
     
+    
+  }
+
+  const handleButtonAddQuantity = (id: number) => {
+   
+    setCartList((prevCart) => 
+      prevCart.map((item) => {
+        return item.id === id ? {...item, quantity: item.quantity +1} : item
+      })
+    )
   }
 
 
   return (
     <>
     <ProductContext.Provider value={{products, handleButtonSearch, loading }}>
-      <cartContext.Provider value={{ isCartOpen, setIsCartOpen, handleButtonAddToCart, cartList }}>
+      <cartContext.Provider value={{ 
+        isCartOpen, setIsCartOpen, handleButtonAddToCart, cartList, handleButtonAddQuantity,
+        }}>
         <CategorieContext.Provider value={{ listCategories, handleSearchForCategory }}>
           <Router />
         </CategorieContext.Provider>

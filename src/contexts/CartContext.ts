@@ -7,9 +7,8 @@ interface CartContextType {
   isCartOpen: boolean;
   setIsCartOpen: (value: boolean) => void
   handleButtonAddToCart: (product: Products) => void
-  cartList: Products[] 
-
-
+  cartList: Products[],
+  handleButtonAddQuantity: (id: number) => void,
 }
 
 export const cartContext = createContext<CartContextType | undefined>(undefined)  
