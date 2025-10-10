@@ -5,15 +5,16 @@ import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 
 
 export const UserButtons = () => {
-  const { setIsCartOpen, cartList } = useCart();
+  const { quantity } = useCart();
 
+  
   return (
     <div>
-      <button className='px-2 relative' onClick={() => setIsCartOpen(true)}>
+      <button className='px-2 relative'>
         <Link to='/checkout' className='px-2'>
           <ShoppingBagIcon />
         </Link>
-        <div className='absolute inline-flex justify-center items-center w-6 h-6 text-white font-bold bg-red-500 border-2 border-white rounded-full -top-2 -right-2'>{cartList.length}</div>
+        <div className='absolute inline-flex justify-center items-center w-6 h-6 text-white font-bold bg-red-500 border-2 border-white rounded-full -top-2 -right-2'>{quantity}</div>
       </button>
       <Person3Icon />
     </div>

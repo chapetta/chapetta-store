@@ -9,6 +9,7 @@ export const CartItemCard = ({ id, title, price, description, category, image, r
 
   const { handleButtonAddQuantity} = useCart()
 
+
   return (
     <Card sx={{ display: 'flex', alignItems: 'center', p: 1, mb: 2 }}>
       <CardMedia
