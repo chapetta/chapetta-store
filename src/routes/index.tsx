@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import { Home } from '../pages/HomePage/HomePage';
-import { CheckOut } from '../pages/CheckoutPage/CheckOut';
+import {  ShoppingCart } from '../pages/ShoppingCart';
 import { Layout } from '../components/Layout/Layout';
 import { ProductDetails } from '../pages/ProductDetails';
 
@@ -11,7 +11,7 @@ export const Router = () => {
       <Route path='/' element={ <Layout />}>
         <Route index element={<Home />} />
         <Route path='/product/:id' element={ <ProductDetails /> } />
-        <Route path='/checkout' element={<CheckOut />} />
+        <Route path='/checkout' element={<ShoppingCart />} />
       </Route>
     </Routes>
   );

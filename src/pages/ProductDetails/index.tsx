@@ -4,18 +4,12 @@ import { ProductContext } from "../../contexts/ProductContext";
 import { StarRateContainer } from "../../components/StarRateContainer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { formatCurrency } from "../../components/FormatCurrency";
 
 export const ProductDetails = () => {
   const { id } = useParams();
   const { products } = useContext(ProductContext);
   const productDetail = products.find((product) => product.id === Number(id));
-
-  const formatCurrency = (value: number) => {
-    return new Intl.NumberFormat('pt-Br', {
-      style: "currency",
-      currency: "BRL"
-    }).format(value)
-  }
 
   return (
     <main className="min-h-screen flex justify-center items-center bg-gradient-to-b from-slate-100 to-slate-200 px-4 py-10">
