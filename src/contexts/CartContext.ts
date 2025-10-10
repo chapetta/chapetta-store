@@ -9,7 +9,8 @@ interface CartContextType {
   handleButtonAddToCart: (product: Products) => void
   cartList: Products[],
   handleButtonAddQuantity: (id: number) => void,
-  quantity: number
+  quantity: number,
+  getTotalValueCart: () => number;
 }
 
 export const cartContext = createContext<CartContextType | undefined>(undefined)  

@@ -100,6 +100,16 @@ function App() {
     )
   }
 
+  const getTotalValueCart = () => {
+    let totalValue = 0
+
+    cartList.forEach((product) => {
+      totalValue += (product.price * product.quantity)
+    })
+
+    return totalValue
+  }
+
 
 
 
@@ -107,7 +117,8 @@ function App() {
     <>
       <ProductContext.Provider value={{ products, handleButtonSearch, loading }}>
         <cartContext.Provider value={{
-          isCartOpen, setIsCartOpen, handleButtonAddToCart, cartList, handleButtonAddQuantity, quantity
+          isCartOpen, setIsCartOpen, handleButtonAddToCart, cartList, handleButtonAddQuantity, quantity,
+          getTotalValueCart
         }}>
           <CategorieContext.Provider value={{ listCategories, handleSearchForCategory }}>
             <Router />
