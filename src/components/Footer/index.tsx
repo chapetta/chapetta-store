@@ -10,6 +10,7 @@ export const Footer = () => {
         py: 3,
         mt: "auto",
       }}
+      className="mt-auto"
     >
       <Container maxWidth="lg">
         <Typography variant="body1" align="center">
