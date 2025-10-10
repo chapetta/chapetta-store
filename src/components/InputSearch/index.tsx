@@ -1,27 +1,51 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useContext, useState } from "react";
 import { ProductContext } from "../../contexts/ProductContext";
+import { TextField, InputAdornment, IconButton } from "@mui/material";
+import SearchIcon from '@mui/icons-material/Search';
 
 export const InputSearch = () => {
-
-  const { handleButtonSearch } = useContext(ProductContext)
-  const [ inputValue, setInputValue ] = useState('')
+  const { handleButtonSearch } = useContext(ProductContext);
+  const [inputValue, setInputValue] = useState("");
 
   return (
-    <div className="flex justify-center m-20">
-
-      <label htmlFor="search" className="flex  justify-center">
-        <input
-          type="text"
-          placeholder="Pesquiste um produto"
-          id="search"
-          name="search"
-          className="text-center border-2"
-          onChange={(e) =>  setInputValue(e.target.value)}
-          />
-      </label>
-     <button className="cursor-pointer" onClick={() => handleButtonSearch(inputValue)}> <FontAwesomeIcon icon={faSearch}/></button>
+    <div className="flex justify-center m-10">
+      <TextField
+        placeholder="Pesquise um produto"
+        variant="outlined"
+        size="small"
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            handleButtonSearch(inputValue)
+            setInputValue('')
+          };
+        }}
+        sx={{
+          width: 350,
+          backgroundColor: "white",
+          borderRadius: "8px",
+          "& .MuiOutlinedInput-root": {
+            "& fieldset": { borderColor: "#ccc" },
+            "&:hover fieldset": { borderColor: "#8f44fd" },
+            "&.Mui-focused fieldset": { borderColor: "#8f44fd" },
+          },
+        }}
+        slotProps={{
+          input: {
+            endAdornment: (
+              <InputAdornment position="end">
+                <IconButton onClick={() => {
+                  handleButtonSearch(inputValue)
+                  setInputValue('')
+                  }}>
+                  <SearchIcon sx={{ color: "#8f44fd" }} />
+                </IconButton>
+              </InputAdornment>
+            ),
+          },
+        }}
+      />
     </div>
   );
 };
