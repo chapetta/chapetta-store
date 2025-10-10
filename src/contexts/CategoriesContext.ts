@@ -1,7 +1,7 @@
 import { createContext } from "react";
 
 
-interface CategoriesContext {
+export interface CategoriesContext {
   listCategories: string[],
   handleSearchForCategory: (category: string) => Promise<void>
 }
