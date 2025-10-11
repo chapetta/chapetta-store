@@ -3,7 +3,7 @@ import AddIcon from '@mui/icons-material/Add'
 import RemoveIcon from '@mui/icons-material/Remove'
 import type { Products } from '../../shared/types'
 import { formatCurrency } from '../../utils/FormatCurrency'
-import { useCart } from '../../hooks/useCart'
+import { useCartContext } from '../../hooks/useCartContext'
 
 export const CartItemCard = ({
   id,
@@ -15,7 +15,7 @@ export const CartItemCard = ({
   rating,
   quantity,
 }: Products) => {
-  const { handleButtonAddQuantity, handleButtonRemoveQuantity } = useCart()
+  const { increaseQuantity, decreaseQuantity } = useCartContext()
 
   return (
     <Card sx={{ display: 'flex', alignItems: 'center', p: 1, mb: 2 }}>
@@ -27,13 +27,13 @@ export const CartItemCard = ({
         </Typography>
       </Box>
       <Box sx={{ display: 'flex', alignItems: 'center' }}>
-        <IconButton onClick={() => handleButtonRemoveQuantity(id)} size="small">
+        <IconButton onClick={() => decreaseQuantity(id)} size="small">
           <RemoveIcon />
         </IconButton>
         <Typography variant="body1" mx={1}>
           {quantity}
         </Typography>
-        <IconButton onClick={() => handleButtonAddQuantity(id)} size="small">
+        <IconButton onClick={() => increaseQuantity(id)} size="small">
           <AddIcon />
         </IconButton>
       </Box>
