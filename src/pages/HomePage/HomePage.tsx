@@ -1,9 +1,9 @@
-import { MainSection } from "./MainSection";
+import { MainSection } from './MainSection'
 
 export const HomePage = () => {
-    return (
-      <>
-        <MainSection />
-      </>
-    );
-};
+  return (
+    <>
+      <MainSection />
+    </>
+  )
+}

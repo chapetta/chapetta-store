@@ -1,4 +1,3 @@
-
 .checkbox-2 {
   position: relative;
   display: flex;
@@ -12,7 +11,7 @@
 }
 
 .checkbox-2:hover .checkbox-check {
-  background: rgba(0, 90, 255, 0.15); 
+  background: rgba(0, 90, 255, 0.15);
 }
 
 .checkbox-input {
@@ -50,7 +49,6 @@
   stroke-dashoffset: 0;
   transition: stroke-dashoffset 0.3s ease;
 }
-
 
 aside {
   border: 2px solid rgba(0, 0, 0, 0.2);

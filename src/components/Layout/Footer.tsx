@@ -1,25 +1,25 @@
-import { Box, Container, Typography, Link, IconButton, Stack } from "@mui/material";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import InstagramIcon from "@mui/icons-material/Instagram";
+import { Box, Container, Typography, Link, IconButton, Stack } from '@mui/material'
+import GitHubIcon from '@mui/icons-material/GitHub'
+import LinkedInIcon from '@mui/icons-material/LinkedIn'
+import InstagramIcon from '@mui/icons-material/Instagram'
 
 export const Footer = () => {
   return (
     <Box
       component="footer"
       sx={{
-        backgroundColor: "#0f172a",
-        color: "white",
+        backgroundColor: '#0f172a',
+        color: 'white',
         py: 4,
-        mt: "auto",
+        mt: 'auto',
       }}
     >
       <Container
         maxWidth="lg"
         sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
           gap: 2,
         }}
       >
@@ -36,9 +36,9 @@ export const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
             sx={{
-              color: "white",
-              transition: "0.3s",
-              "&:hover": { color: "#00bcd4", transform: "scale(1.1)" },
+              color: 'white',
+              transition: '0.3s',
+              '&:hover': { color: '#00bcd4', transform: 'scale(1.1)' },
             }}
           >
             <GitHubIcon />
@@ -50,9 +50,9 @@ export const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
             sx={{
-              color: "white",
-              transition: "0.3s",
-              "&:hover": { color: "#0A66C2", transform: "scale(1.1)" },
+              color: 'white',
+              transition: '0.3s',
+              '&:hover': { color: '#0A66C2', transform: 'scale(1.1)' },
             }}
           >
             <LinkedInIcon />
@@ -64,9 +64,9 @@ export const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
             sx={{
-              color: "white",
-              transition: "0.3s",
-              "&:hover": { color: "#E1306C", transform: "scale(1.1)" },
+              color: 'white',
+              transition: '0.3s',
+              '&:hover': { color: '#E1306C', transform: 'scale(1.1)' },
             }}
           >
             <InstagramIcon />
@@ -75,12 +75,12 @@ export const Footer = () => {
 
         {/* Créditos */}
         <Typography variant="body2" align="center" color="gray">
-          Feito com ❤️ usando{" "}
+          Feito com ❤️ usando{' '}
           <Link href="https://mui.com/" color="secondary" underline="hover">
             MUI React
           </Link>
         </Typography>
       </Container>
     </Box>
-  );
-};
+  )
+}

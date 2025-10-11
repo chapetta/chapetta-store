@@ -1,6 +1,6 @@
-import type { Products } from "../types/ProductTypes"
+import type { Products } from '../shared/types'
 
-export async function getProducts () {
+export async function getProducts() {
   const URL_base = 'https://fakestoreapi.com/products'
 
   const response = await fetch(URL_base)
@@ -15,12 +15,11 @@ export async function getCategories() {
   const response = await fetch(URL_BASE)
   const data = await response.json()
 
-  return data;
-
+  return data
 }
 
 export async function getProductsFromQuery(query: string) {
-  const URL = 'https://fakestoreapi.com/products';
+  const URL = 'https://fakestoreapi.com/products'
 
   const response = await fetch(URL)
   const data = await response.json()
@@ -29,8 +28,6 @@ export async function getProductsFromQuery(query: string) {
     console.log(product.title.toLocaleLowerCase().includes(query.toLocaleLowerCase()))
     return product.title.toLowerCase().includes(query.toLocaleLowerCase())
   })
-
-  
 
   return filteredProduct
 }
