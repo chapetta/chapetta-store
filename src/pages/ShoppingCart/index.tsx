@@ -1,10 +1,10 @@
 import { Box, Button, Divider, Typography } from '@mui/material'
-import { useCart } from '../../hooks/useCart'
 import { CartItemCard } from '../../components/Cart/CartItemCard'
 import { formatCurrency } from '../../utils/FormatCurrency'
+import { useCartContext } from '../../hooks/useCartContext'
 
 export const ShoppingCart = () => {
-  const { cartList, getTotalValueCart } = useCart()
+  const { cartList, getTotal } = useCartContext()
 
   return (
     <Box
@@ -49,7 +49,7 @@ export const ShoppingCart = () => {
           <Typography variant="h6" fontWeight={600}>
             Valor Total da compra:{' '}
             <Box component="span" color="primary.main">
-              {formatCurrency(getTotalValueCart())}
+              {formatCurrency(getTotal())}
             </Box>
           </Typography>
           <Button
