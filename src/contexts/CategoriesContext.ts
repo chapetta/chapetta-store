@@ -1,11 +1,7 @@
 import { createContext } from 'react'
+import type { CategoriesContextType } from '../types/CategoryContextType'
 
-export interface CategoriesContext {
-  listCategories: string[]
-  handleSearchForCategory: (category: string) => Promise<void>
-}
-
-export const CategorieContext = createContext<CategoriesContext>({
+export const CategoriesContext = createContext<CategoriesContextType>({
   listCategories: [],
   handleSearchForCategory: async () => {},
 })

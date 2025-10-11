@@ -1,11 +1,10 @@
 import { useState } from 'react'
-import type { CategoriesContext } from '../../../contexts/CategoriesContext'
 import './style.css'
+import { useCategories } from '../../../hooks/useCategories'
 
-export const AsideCategoriesFilter = ({
-  listCategories,
-  handleSearchForCategory,
-}: CategoriesContext) => {
+export const AsideCategoriesFilter = () => {
+  const { listCategories, filterByCategorie } = useCategories()
+
   const [selectedCategorie, setSelectedCategorie] = useState('')
 
   return (
@@ -23,7 +22,7 @@ export const AsideCategoriesFilter = ({
                     name="categorie"
                     value={categorie}
                     onChange={(e) => setSelectedCategorie(e.target.value)}
-                    onClick={() => handleSearchForCategory(categorie)}
+                    onClick={() => filterByCategorie(categorie)}
                     className="checkbox-input"
                   ></input>
                   <svg className="checkbox-check" width="25" height="25">

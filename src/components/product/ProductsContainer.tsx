@@ -1,7 +1,7 @@
 import { useContext } from 'react'
-import { ProductCard } from '../../components/ProductCard.tsx'
 import { ProductContext } from '../../contexts/ProductContext.ts'
 import { Link } from 'react-router-dom'
+import { ProductCard } from './ProductCard.tsx'
 
 export const ProductsContainer = () => {
   const { products } = useContext(ProductContext)

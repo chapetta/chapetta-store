@@ -1,56 +1,28 @@
-import { Router } from './routes'
-import { useEffect, useState } from 'react'
-import { getCategories, getProducts, getProductsFromQuery } from './services/api'
-import { CategorieContext } from './contexts/CategoriesContext'
 import { ProductContext } from './contexts/ProductContext'
-import type { Products } from './types/ProductTypes'
 import { CartProvider } from '../providers/CartProvider'
+import { Router } from '../routes'
+import { CategoriesProvider } from '../providers/CategoryProvider'
+
 function App() {
-  const [isCartOpen, setIsCartOpen] = useState(false)
-  const [listCategories, setListCategories] = useState([])
+  // const handleButtonSearch = async (query: string) => {
+  //   setLoading(true)
 
-  useEffect(() => {
-    const fetchInitialData = async () => {
-      setLoading(true)
-      const [categories, products] = await Promise.all([getCategories(), getProducts()])
+  //   const getProductsFromInputSearch = await getProductsFromQuery(query)
+  //   const delay = new Promise((resolve) => setTimeout(resolve, 1000))
 
-      await new Promise((r) => setTimeout(r, 1000))
+  //   const [results] = await Promise.all([getProductsFromInputSearch, delay])
 
-      setListCategories(categories)
-      setProducts(products)
-      setLoading(false)
-    }
-
-    fetchInitialData()
-  }, [])
-
-  const handleButtonSearch = async (query: string) => {
-    setLoading(true)
-
-    const getProductsFromInputSearch = await getProductsFromQuery(query)
-    const delay = new Promise((resolve) => setTimeout(resolve, 1000))
-
-    const [results] = await Promise.all([getProductsFromInputSearch, delay])
-
-    setProducts(results)
-    setLoading(false)
-  }
-
-  const handleSearchForCategory = async (category: string) => {
-    const productsList = await getProducts()
-
-    const newListByCategory = productsList.filter((item: Products) => item.category === category)
-
-    setProducts(newListByCategory)
-  }
+  //   setProducts(results)
+  //   setLoading(false)
+  // }
 
   return (
     <>
       <ProductContext.Provider value={{ products, handleButtonSearch, loading }}>
         <CartProvider>
-          <CategorieContext.Provider value={{ listCategories, handleSearchForCategory }}>
+          <CategoriesProvider>
             <Router />
-          </CategorieContext.Provider>
+          </CategoriesProvider>
         </CartProvider>
       </ProductContext.Provider>
     </>

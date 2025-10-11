@@ -1,9 +1,9 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartPlus } from '@fortawesome/free-solid-svg-icons'
-import type { Products } from '../contexts/ProductContext'
 import { StarRateContainer } from '../ui/StarRateContainer'
-import { useCart } from '../UseHooks/UseCart'
-import { formatCurrency } from '../shared/lib/FormatCurrency'
+import { formatCurrency } from '../../utils/FormatCurrency'
+import { useCartContext } from '../../hooks/useCartContext'
+import type { Products } from '../../contexts/ProductContext'
 
 export const ProductCard = ({
   id,
@@ -14,7 +14,7 @@ export const ProductCard = ({
   image,
   rating,
 }: Products) => {
-  const { handleButtonAddToCart } = useCart()
+  const { addToCart } = useCartContext()
 
   return (
     <article className="card-produto group flex w-48 flex-col justify-around rounded-lg border-2 border-gray-200 bg-stone-100 shadow-xl shadow-slate-200">
@@ -32,7 +32,16 @@ export const ProductCard = ({
         onClick={(e) => {
           e.preventDefault()
           e.stopPropagation()
-          handleButtonAddToCart({ id, title, price, description, image, category, rating })
+          addToCart({
+            id,
+            title,
+            price,
+            description,
+            image,
+            category,
+            rating,
+            quantity: 0,
+          })
         }}
       >
         <FontAwesomeIcon icon={faCartPlus} />
