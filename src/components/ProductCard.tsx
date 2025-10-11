@@ -3,6 +3,7 @@ import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
 import type { Products } from '../contexts/ProductContext'
 import { StarRateContainer } from "./StarRateContainer";
 import { useCart } from "../UseHooks/UseCart";
+import { formatCurrency } from "./FormatCurrency";
 
 
 export const ProductCard = ({ id, title, price, description, category, image, rating }: Products) => {
@@ -17,7 +18,7 @@ export const ProductCard = ({ id, title, price, description, category, image, ra
         className=" group-hover:scale-110 mx-6 my-4 transition-transform duration-300 transform"
       />
       <p className="mx-4 text-sm line-clamp-2 ">{title}</p>
-      <p className="mx-4 text-sm  text-green-700 ">${price}</p>
+      <p className="mx-4 text-sm  text-green-700 ">{formatCurrency(price)}</p>
       <p className="mx-4 text-sm line-clamp-1">{description}</p>
       <StarRateContainer rating={rating}/>
       <button 
