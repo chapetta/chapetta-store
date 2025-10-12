@@ -1,33 +1,37 @@
-import { Card, CardMedia, Box, Typography, IconButton } from '@mui/material'
-import AddIcon from '@mui/icons-material/Add'
-import RemoveIcon from '@mui/icons-material/Remove'
+import { Card, CardContent } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
+import { Minus, Plus, Trash2 } from 'lucide-react'
 import { useCartContext } from '@/hooks/useCartContext'
 import { formatCurrency } from '@/utils/FormatCurrency'
 import type { Product } from '@/types/ProductType'
-
 export const CartItemCard = ({ id, title, price, image, quantity }: Product) => {
   const { increaseQuantity, decreaseQuantity } = useCartContext()
 
   return (
-    <Card sx={{ display: 'flex', alignItems: 'center', p: 1, mb: 2 }}>
-      <CardMedia component="img" sx={{ width: 80, borderRadius: 1 }} image={image} alt={title} />
-      <Box sx={{ flex: 1, ml: 2 }}>
-        <Typography variant="subtitle1">{title}</Typography>
-        <Typography variant="body2" color="textSecondary">
-          {formatCurrency(price)}
-        </Typography>
-      </Box>
-      <Box sx={{ display: 'flex', alignItems: 'center' }}>
-        <IconButton onClick={() => decreaseQuantity(id)} size="small">
-          <RemoveIcon />
-        </IconButton>
-        <Typography variant="body1" mx={1}>
+    <Card className="mb-3">
+      <CardContent className="mr-3 flex items-center justify-between gap-3 px-5">
+        <img src={image} alt={title} className="h-20 w-16 rounded object-contain" loading="lazy" />
+        <div>
+          <p className="w-80 truncate">{title}</p>
+        </div>
+        <div className="justify-cnnter flex items-center gap-3">
+          <Button
+            size="icon"
+            variant={quantity > 1 ? 'outline' : 'destructive'}
+            onClick={() => decreaseQuantity(id)}
+          >
+            {quantity > 1 ? <Minus size="16" /> : <Trash2 size="16" />}
+          </Button>
+
           {quantity}
-        </Typography>
-        <IconButton onClick={() => increaseQuantity(id)} size="small">
-          <AddIcon />
-        </IconButton>
-      </Box>
+          <Button size="icon" variant="outline" onClick={() => increaseQuantity(id)}>
+            <Plus size="small" />
+          </Button>
+          <div>
+            <p className="ml-3">{formatCurrency(price * quantity)}</p>
+          </div>
+        </div>
+      </CardContent>
     </Card>
   )
 }

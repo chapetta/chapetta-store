@@ -11,7 +11,7 @@ export interface Product {
   category: string
   image: string
   rating: Rating
-  quantity?: number
+  quantity: number
 }
 
 export interface ProductsContextType {
