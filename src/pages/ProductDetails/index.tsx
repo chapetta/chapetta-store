@@ -1,16 +1,15 @@
-import { useContext } from 'react'
 import { useParams } from 'react-router-dom'
-import { ProductContext } from '@/contexts/ProductContext'
 import { StarRateContainer } from '@/components/ui/StarRateContainer'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
 import { formatCurrency } from '@/utils/FormatCurrency'
 import { Box, Button } from '@mui/material'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
+import { useProductsContext } from '@/hooks/useProductsContext'
 
 export const ProductDetails = () => {
   const { id } = useParams()
-  const { products } = useContext(ProductContext)
+  const { products } = useProductsContext()
   const productDetail = products.find((product) => product.id === Number(id))
 
   return (
@@ -27,7 +26,7 @@ export const ProductDetails = () => {
         <div className="flex w-full flex-col justify-start space-y-4 text-center md:w-1/2 md:text-left">
           <h3 className="text-3xl leading-snug font-bold text-slate-800">{productDetail?.title}</h3>
 
-          {productDetail && <StarRateContainer rating={productDetail.rating} />} 
+          {productDetail && <StarRateContainer rating={productDetail.rating} />}
 
           <p className="text-sm leading-relaxed text-slate-600">{productDetail?.description}</p>
 

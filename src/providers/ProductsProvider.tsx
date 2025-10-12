@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { ProductsContext } from '@/contexts/ProductContext'
+import { ProductsContext } from '@/contexts/ProductsContext'
 import { useProducts } from '@/hooks/useProducts'
 
 interface ProductsProviderProps {
