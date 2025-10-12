@@ -1,10 +1,10 @@
-import { useContext, useState } from 'react'
-import { ProductContext } from '../../contexts/ProductContext'
 import { TextField, InputAdornment, IconButton } from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search'
+import { useProductsContext } from '@/hooks/useProductsContext'
+import { useState } from 'react'
 
 export const InputSearch = () => {
-  const { handleButtonSearch } = useContext(ProductContext)
+  const { searchProducts } = useProductsContext()
   const [inputValue, setInputValue] = useState('')
 
   return (
@@ -17,7 +17,7 @@ export const InputSearch = () => {
         onChange={(e) => setInputValue(e.target.value)}
         onKeyDown={(e) => {
           if (e.key === 'Enter') {
-            handleButtonSearch(inputValue)
+            searchProducts(inputValue)
             setInputValue('')
           }
         }}
@@ -37,7 +37,7 @@ export const InputSearch = () => {
               <InputAdornment position="end">
                 <IconButton
                   onClick={() => {
-                    handleButtonSearch(inputValue)
+                    searchProducts(inputValue)
                     setInputValue('')
                   }}
                 >

@@ -1,11 +1,11 @@
 import { Card, CardMedia, Box, Typography, IconButton } from '@mui/material'
 import AddIcon from '@mui/icons-material/Add'
 import RemoveIcon from '@mui/icons-material/Remove'
-import { formatCurrency } from '../../utils/FormatCurrency'
-import { useCartContext } from '../../hooks/useCartContext'
-import type { Products } from '../../contexts/ProductContext'
+import { useCartContext } from '@/hooks/useCartContext'
+import { formatCurrency } from '@/utils/FormatCurrency'
+import type { Product } from '@/types/ProductType'
 
-export const CartItemCard = ({ id, title, price, image, quantity }: Products) => {
+export const CartItemCard = ({ id, title, price, image, quantity }: Product) => {
   const { increaseQuantity, decreaseQuantity } = useCartContext()
 
   return (

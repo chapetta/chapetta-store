@@ -1,4 +1,4 @@
-import type { Products } from '../shared/types'
+import type { Product } from '@/types/ProductType'
 
 export async function getProducts() {
   const URL_base = 'https://fakestoreapi.com/products'
@@ -24,7 +24,7 @@ export async function getProductsFromQuery(query: string) {
   const response = await fetch(URL)
   const data = await response.json()
 
-  const filteredProduct = data.filter((product: Products) => {
+  const filteredProduct = data.filter((product: Product) => {
     console.log(product.title.toLocaleLowerCase().includes(query.toLocaleLowerCase()))
     return product.title.toLowerCase().includes(query.toLocaleLowerCase())
   })

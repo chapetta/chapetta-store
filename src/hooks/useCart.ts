@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
-import type { Products } from '../contexts/ProductContext'
+import type { Product } from '@/types/ProductType'
 
 export const useCart = () => {
-  const [cartList, setCartList] = useState<Products[] | []>([])
+  const [cartList, setCartList] = useState<Product[] | []>([])
   const [quantity, setQuantity] = useState(0)
 
   useEffect(() => {
@@ -10,7 +10,7 @@ export const useCart = () => {
     setQuantity(totalItems)
   }, [cartList])
 
-  const addToCart = (product: Products) => {
+  const addToCart = (product: Product) => {
     setCartList((prevCart) => {
       const existingProduct = prevCart.find((item) => item.id === product.id)
 

@@ -1,7 +1,7 @@
 import Person3Icon from '@mui/icons-material/Person3'
 import { Link } from 'react-router-dom'
-import { useCart } from '../../../hooks/useCart'
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag'
+import { useCart } from '@/hooks/useCart'
 
 export const UserButtons = () => {
   const { quantity } = useCart()

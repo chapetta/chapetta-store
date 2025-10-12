@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar as faStarSolid } from '@fortawesome/free-solid-svg-icons'
 import { faStar as faStarEmpty } from '@fortawesome/free-regular-svg-icons'
-import type { Rating } from '../../contexts/ProductContext'
+import type { Rating } from '@/types/ProductType'
 
 interface StarRateContainerProps {
   rating: Rating

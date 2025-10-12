@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './style.css'
-import { useCategories } from '../../../hooks/useCategories'
+import { useCategories } from '@/hooks/useCategories'
 
 export const AsideCategoriesFilter = () => {
   const { listCategories, filterByCategorie } = useCategories()

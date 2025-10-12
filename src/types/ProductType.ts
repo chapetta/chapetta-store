@@ -14,15 +14,8 @@ export interface Product {
   quantity?: number
 }
 
-export type Category = string
-
-export interface ProductContextType {
+export interface ProductsContextType {
   products: Product[]
+  searchProducts: (query: string) => Promise<void>
   loading: boolean
-  handleButtonSearch: (query: string) => Promise<void>
-}
-
-export interface CategoriesContextType {
-  listCategories: Category[]
-  handleSearchForCategory: (category: string) => Promise<void>
 }

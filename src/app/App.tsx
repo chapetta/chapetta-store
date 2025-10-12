@@ -1,7 +1,7 @@
-import { ProductContext } from './contexts/ProductContext'
-import { CartProvider } from '../providers/CartProvider'
-import { Router } from '../routes'
-import { CategoriesProvider } from '../providers/CategoryProvider'
+import { CartProvider } from '@/providers/CartProvider'
+import { CategoriesProvider } from '@/providers/CategoryProvider'
+import { ProductsProvider } from '@/providers/ProductsProvider'
+import { Router } from '@/routes'
 
 function App() {
   // const handleButtonSearch = async (query: string) => {
@@ -18,13 +18,13 @@ function App() {
 
   return (
     <>
-      <ProductContext.Provider value={{ products, handleButtonSearch, loading }}>
+      <ProductsProvider>
         <CartProvider>
           <CategoriesProvider>
             <Router />
           </CategoriesProvider>
         </CartProvider>
-      </ProductContext.Provider>
+      </ProductsProvider>
     </>
   )
 }

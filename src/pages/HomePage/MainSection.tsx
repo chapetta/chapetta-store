@@ -1,17 +1,15 @@
-import { useContext } from 'react'
-import { ProductsContainer } from '../../components/product/ProductsContainer'
-import { InputSearch } from '../../components/ui/InputSearch'
-import { Loading } from '../../components/ui/Loading'
-import { ProductContext } from '../../contexts/ProductContext'
-import { AsideCategoriesFilter } from '../../components/product/AsideCategoriesFilter'
+import { ProductsContainer } from '@/components/product/ProductsContainer'
+import { InputSearch } from '@/components/ui/InputSearch'
+import { Loading } from '@/components/ui/Loading'
+import { AsideCategoriesFilter } from '@/components/product/AsideCategoriesFilter'
+import { useProducts } from '@/hooks/useProducts'
 
 export const MainSection = () => {
-  const { loading } = useContext(ProductContext)
+  const { loading } = useProducts()
 
   return (
     <main className="grid grid-cols-[240px_1fr]">
-      <AsideCategoriesFilter
-      />
+      <AsideCategoriesFilter />
       <section>
         <InputSearch />
         {loading ? <Loading /> : <ProductsContainer />}

@@ -1,9 +1,10 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartPlus } from '@fortawesome/free-solid-svg-icons'
-import { StarRateContainer } from '../ui/StarRateContainer'
-import { formatCurrency } from '../../utils/FormatCurrency'
-import { useCartContext } from '../../hooks/useCartContext'
-import type { Products } from '../../contexts/ProductContext'
+import { useCartContext } from '@/hooks/useCartContext'
+import type { Product } from '@/types/ProductType'
+import { formatCurrency } from '@/utils/FormatCurrency'
+import { StarRateContainer } from '@/components/ui/StarRateContainer'
+
 
 export const ProductCard = ({
   id,
@@ -13,7 +14,7 @@ export const ProductCard = ({
   category,
   image,
   rating,
-}: Products) => {
+}: Product) => {
   const { addToCart } = useCartContext()
 
   return (

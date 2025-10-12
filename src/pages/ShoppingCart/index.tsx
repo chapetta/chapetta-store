@@ -1,7 +1,7 @@
 import { Box, Button, Divider, Typography } from '@mui/material'
-import { CartItemCard } from '../../components/Cart/CartItemCard'
-import { formatCurrency } from '../../utils/FormatCurrency'
-import { useCartContext } from '../../hooks/useCartContext'
+import { CartItemCard } from '@/components/Cart/CartItemCard'
+import { formatCurrency } from '@/utils/FormatCurrency'
+import { useCartContext } from '@/hooks/useCartContext'
 
 export const ShoppingCart = () => {
   const { cartList, getTotal } = useCartContext()

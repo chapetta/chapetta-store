@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import logo from '../assets/logo/chapettaLogo.png'
+import logo from '@/assets/logo/chapettaLogo.png'
 import { UserButtons } from './userButtons'
 
 export const Header = () => {

@@ -1,8 +1,8 @@
-import type { Products } from '../contexts/ProductContext'
+import type { Product } from '@/types/ProductType'
 
 export interface CartContextType {
-  addToCart: (product: Products) => void
-  cartList: Products[]
+  addToCart: (product: Product) => void
+  cartList: Product[]
   increaseQuantity: (id: number) => void
   quantity: number
   getTotal: () => number

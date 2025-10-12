@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
-import { CartContext } from '../contexts/CartContext'
-import { useCart } from '../hooks/useCart'
+import { CartContext } from '@/contexts/CartContext'
+import { useCart } from '@/hooks/useCart'
 
 interface CartProviderProps {
   children: ReactNode

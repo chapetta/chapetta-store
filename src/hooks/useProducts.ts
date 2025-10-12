@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { getProducts, getProductsFromQuery } from '../services/api'
+import { getProducts, getProductsFromQuery } from '@/services/api'
 
 export const useProducts = () => {
   const [products, setProducts] = useState([])

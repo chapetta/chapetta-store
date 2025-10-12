@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
-import { CategoriesContext } from '../contexts/CategoriesContext'
-import { useCategories } from '../hooks/useCategories'
+import { CategoriesContext } from '@/contexts/CategoriesContext'
+import { useCategories } from '@/hooks/useCategories'
 
 interface CategoriesContextProps {
   children: ReactNode
