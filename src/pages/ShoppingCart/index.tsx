@@ -1,71 +1,44 @@
-import { Box, Button, Divider, Typography } from '@mui/material'
 import { CartItemCard } from '@/components/Cart/CartItemCard'
 import { formatCurrency } from '@/utils/FormatCurrency'
 import { useCartContext } from '@/hooks/useCartContext'
-
+import { Card, CardContent } from '@/components/ui/card'
+import { Separator } from '@/components/ui/separator'
+import { Button } from '@/components/ui/button'
 export const ShoppingCart = () => {
   const { cartList, getTotal } = useCartContext()
 
   return (
-    <Box
-      sx={{
-        maxWidth: '800px',
-        mx: 'auto',
-        mt: 4,
-        mb: 8,
-        background: 'white',
-        borderRadius: 2,
-        boxShadow: 3,
-        p: 3,
-      }}
-    >
-      <Typography variant="h5" fontWeight={600} mb={3}>
-        🛒 Carrinho de Compras
-      </Typography>
-      <Divider sx={{ mb: 3 }} />
+    <Card className="mx-auto mt-10 w-full max-w-4xl border-none shadow-lg">
+      <CardContent className="flex flex-col gap-6 px-8 py-10">
+        <div className="flex items-center justify-center gap-3">
+          <span className="text-4xl">🛒</span>
+          <h1 className="text-2xl font-semibold tracking-tight text-slate-800">
+            {' '}
+            Carrinho de Compras
+          </h1>
+        </div>
+        <Separator />
 
-      <Box>
-        {cartList.length === 0 ? (
-          <Typography variant="body1" align="center" sx={{ mt: 4 }}>
-            Seu carrinho está vazio 🛒
-          </Typography>
-        ) : (
-          cartList.map((product) => <CartItemCard key={`product-${product.id}`} {...product} />)
+        <div className="mt-4 flex w-full flex-col gap-4">
+          {cartList.length === 0 ? (
+            <h2>Seu carrinho está vazio 🛒</h2>
+          ) : (
+            cartList.map((product) => <CartItemCard key={`product-${product.id}`} {...product} />)
+          )}
+        </div>
+
+        <Separator />
+
+        {cartList.length > 0 && (
+          <div className="mt-4 flex w-full items-center justify-between">
+            <div className="flex gap-3 text-lg font-medium text-slate-700">
+              Valor Total da compra:{' '}
+              <span className="font-semibold text-slate-900">{formatCurrency(getTotal())}</span>
+            </div>
+            <Button className="px-8 py-5 text-base font-semibold">Finalizar Compra</Button>
+          </div>
         )}
-      </Box>
-
-      <Divider sx={{ my: 3 }} />
-
-      {cartList.length > 0 && (
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: { xs: 'column', sm: 'row' },
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            gap: 2,
-          }}
-        >
-          <Typography variant="h6" fontWeight={600}>
-            Valor Total da compra:{' '}
-            <Box component="span" color="primary.main">
-              {formatCurrency(getTotal())}
-            </Box>
-          </Typography>
-          <Button
-            variant="contained"
-            color="primary"
-            sx={{
-              px: 4,
-              py: 1.5,
-              fontWeight: 'bold',
-              borderRadius: 2,
-            }}
-          >
-            Finalizar Compra
-          </Button>
-        </Box>
-      )}
-    </Box>
+      </CardContent>
+    </Card>
   )
 }
