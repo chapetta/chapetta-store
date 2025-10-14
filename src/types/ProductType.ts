@@ -18,4 +18,5 @@ export interface ProductsContextType {
   products: Product[]
   searchProducts: (query: string) => Promise<void>
   loading: boolean
+  setProducts: (products: Product[]) => void
 }

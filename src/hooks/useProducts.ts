@@ -22,5 +22,5 @@ export const useProducts = () => {
     setLoading(false)
   }
 
-  return { products, loading, searchProducts }
+  return { products, loading, searchProducts, setProducts }
 }

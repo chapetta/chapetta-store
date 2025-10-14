@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
-import type { Product } from '@/types/ProductType'
-import { getCategories, getProducts } from '@/services/api'
+import { getCategories } from '@/services/api'
+import { useProductsContext } from './useProductsContext'
 
 export const useCategories = () => {
   const [listCategories, setListCategories] = useState([])
+  const productsContext = useProductsContext()
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -13,12 +14,14 @@ export const useCategories = () => {
     }
 
     fetchCategories()
-  })
+  }, [])
 
   const filterByCategorie = async (category: string) => {
-    const products = await getProducts()
-
-    return products.filter((product: Product) => product.category === category)
+    if (productsContext) {
+      const response = await fetch(`https://fakestoreapi.com/products/category/${category}`)
+      const data = await response.json()
+      productsContext.setProducts(data)
+    }
   }
 
   return { listCategories, filterByCategorie }

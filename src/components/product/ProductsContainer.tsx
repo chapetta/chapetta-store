@@ -9,8 +9,8 @@ export const ProductsContainer = () => {
     <section className="container mx-auto flex flex-wrap justify-center gap-10 p-10">
       {products.length > 0 ? (
         products.map((product: Product) => (
-          <Link to={`/product/${product.id}`}>
-            <ProductCard key={`product_${product.id}_key`} {...product} />
+          <Link to={`/product/${product.id}`} key={`product_${product.id}_key`}>
+            <ProductCard {...product} />
           </Link>
         ))
       ) : (
