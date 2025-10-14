@@ -8,5 +8,10 @@ interface CategoriesContextProps {
 
 export const CategoriesProvider = ({ children }: CategoriesContextProps) => {
   const categories = useCategories()
-  return <CategoriesContext.Provider value={categories}>{children}</CategoriesContext.Provider>
+
+  return (
+    <CategoriesContext.Provider value={categories}>
+      {children}
+    </CategoriesContext.Provider>
+  )
 }

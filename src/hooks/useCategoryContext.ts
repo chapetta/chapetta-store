@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import { CategoriesContext } from '@/contexts/CategoriesContext'
 
-export const useCategories = () => {
+export const useCategoryContext = () => {
   const context = useContext(CategoriesContext)
 
   if (!context) {

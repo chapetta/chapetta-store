@@ -7,11 +7,11 @@ function App() {
   return (
     <>
       <ProductsProvider>
-        <CartProvider>
-          <CategoriesProvider>
+        <CategoriesProvider>
+          <CartProvider>
             <Router />
-          </CategoriesProvider>
-        </CartProvider>
+          </CartProvider>
+        </CategoriesProvider>
       </ProductsProvider>
     </>
   )

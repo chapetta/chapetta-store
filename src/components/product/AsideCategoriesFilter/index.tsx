@@ -1,11 +1,16 @@
 import { useState } from 'react'
 import './style.css'
-import { useCategories } from '@/hooks/useCategories'
+import { useCategoryContext } from '@/hooks/useCategoryContext'
 
 export const AsideCategoriesFilter = () => {
-  const { listCategories, filterByCategorie } = useCategories()
+  const { listCategories, filterByCategorie } = useCategoryContext()
 
   const [selectedCategorie, setSelectedCategorie] = useState('')
+
+  const handleCategoryChange = (category: string) => {
+    setSelectedCategorie(category)
+    filterByCategorie(category)
+  }
 
   return (
     <aside className="mx-10 my-10 flex h-[500px] w-60 flex-col gap-5 border-3 p-4 text-black">
@@ -21,8 +26,7 @@ export const AsideCategoriesFilter = () => {
                     checked={selectedCategorie === categorie}
                     name="categorie"
                     value={categorie}
-                    onChange={(e) => setSelectedCategorie(e.target.value)}
-                    onClick={() => filterByCategorie(categorie)}
+                    onChange={(e) => handleCategoryChange(e.target.value)}
                     className="checkbox-input"
                   ></input>
                   <svg className="checkbox-check" width="25" height="25">

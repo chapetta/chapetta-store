@@ -5,4 +5,5 @@ export const ProductsContext = createContext<ProductsContextType>({
   products: [],
   searchProducts: async () => {},
   loading: false,
+  setProducts: () => {},
 })
