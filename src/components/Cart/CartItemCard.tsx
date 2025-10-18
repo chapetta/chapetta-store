@@ -17,6 +17,7 @@ export const CartItemCard = ({ id, title, price, image, quantity }: Product) => 
         <div className="justify-cnnter flex items-center gap-3">
           <Button
             size="icon"
+            className="cursor-pointer transition-transform duration-100 active:scale-95"
             variant={quantity > 1 ? 'outline' : 'destructive'}
             onClick={() => decreaseQuantity(id)}
           >
@@ -24,7 +25,12 @@ export const CartItemCard = ({ id, title, price, image, quantity }: Product) => 
           </Button>
 
           {quantity}
-          <Button size="icon" variant="outline" onClick={() => increaseQuantity(id)}>
+          <Button
+            size="icon"
+            className="cursor-pointer transition-transform duration-100 active:scale-95"
+            variant="outline"
+            onClick={() => increaseQuantity(id)}
+          >
             <Plus size="small" />
           </Button>
           <div>

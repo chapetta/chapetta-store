@@ -35,7 +35,9 @@ export const ShoppingCart = () => {
               Valor Total da compra:{' '}
               <span className="font-semibold text-slate-900">{formatCurrency(getTotal())}</span>
             </div>
-            <Button className="px-8 py-5 text-base font-semibold">Finalizar Compra</Button>
+            <Button className="px-8 py-5 text-base font-semibold transition-transform duration-100 active:scale-95">
+              Finalizar Compra
+            </Button>
           </div>
         )}
       </CardContent>

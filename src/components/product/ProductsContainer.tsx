@@ -6,11 +6,11 @@ import type { Product } from '@/types/ProductType.ts'
 export const ProductsContainer = () => {
   const { products } = useProductsContext()
   return (
-    <section className="container mx-auto flex flex-wrap justify-center gap-10 p-10">
+    <section className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
       {products.length > 0 ? (
         products.map((product: Product) => (
           <Link to={`/product/${product.id}`} key={`product_${product.id}_key`}>
-            <ProductCard {...product} />
+            <ProductCard {...product}/>
           </Link>
         ))
       ) : (
