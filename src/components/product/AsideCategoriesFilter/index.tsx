@@ -13,7 +13,7 @@ export const AsideCategoriesFilter = () => {
   }
 
   return (
-    <aside className="mx-10 my-10 flex h-[500px] w-60 flex-col gap-5 border-3 p-4 text-black">
+    <aside className="border-border bg-card text-foreground my-10 flex h-[500px] w-60 flex-col gap-5 rounded-xl border-2 p-4 shadow-sm">
       <h2>Categorias:</h2>
       <nav>
         <ul>

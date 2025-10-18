@@ -1,53 +1,36 @@
-import { TextField, InputAdornment, IconButton } from '@mui/material'
-import SearchIcon from '@mui/icons-material/Search'
-import { useProductsContext } from '@/hooks/useProductsContext'
+import { Input } from '@/components/ui/input'
+import { Button } from '@/components/ui/button'
+import { Search } from 'lucide-react'
 import { useState } from 'react'
+import { useProductsContext } from '@/hooks/useProductsContext'
 
 export const InputSearch = () => {
   const { searchProducts } = useProductsContext()
-  const [inputValue, setInputValue] = useState('')
+  const [value, setValue] = useState('')
+
+  const handleSearch = () => {
+    if (!value.trim()) return
+    searchProducts(value)
+    setValue('')
+  }
 
   return (
-    <div className="m-10 flex justify-center">
-      <TextField
-        placeholder="Pesquise um produto"
-        variant="outlined"
-        size="small"
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
-        onKeyDown={(e) => {
-          if (e.key === 'Enter') {
-            searchProducts(inputValue)
-            setInputValue('')
-          }
-        }}
-        sx={{
-          width: 350,
-          backgroundColor: 'white',
-          borderRadius: '8px',
-          '& .MuiOutlinedInput-root': {
-            '& fieldset': { borderColor: '#ccc' },
-            '&:hover fieldset': { borderColor: '#8f44fd' },
-            '&.Mui-focused fieldset': { borderColor: '#8f44fd' },
-          },
-        }}
-        slotProps={{
-          input: {
-            endAdornment: (
-              <InputAdornment position="end">
-                <IconButton
-                  onClick={() => {
-                    searchProducts(inputValue)
-                    setInputValue('')
-                  }}
-                >
-                  <SearchIcon sx={{ color: '#8f44fd' }} />
-                </IconButton>
-              </InputAdornment>
-            ),
-          },
-        }}
+    <div className="flex w-full max-w-lg items-center rounded-md bg-white pr-1 pl-3 shadow-sm focus-within:ring-2 focus-within:ring-blue-600">
+      <Input
+        type="text"
+        placeholder="Pesquisar na ChapettaStore"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
+        className="border-none bg-transparent text-black focus-visible:ring-0"
       />
+      <Button
+        size="sm"
+        onClick={handleSearch}
+        className="bg-blue-600 px-5 text-white hover:bg-blue-700"
+      >
+        <Search className="h-4 w-4" />
+      </Button>
     </div>
   )
 }

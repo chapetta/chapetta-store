@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { UserButtons } from './userButtons'
 import { Store } from 'lucide-react'
+import { InputSearch } from '@/components/ui/InputSearch'
 
 export const Header = () => {
   return (
@@ -12,6 +13,7 @@ export const Header = () => {
             Chapetta<span className="font-sbold text-white">Store</span>
           </h2>
         </Link>
+        <InputSearch />
         <UserButtons />
       </header>
     </>

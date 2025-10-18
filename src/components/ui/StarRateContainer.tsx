@@ -1,6 +1,4 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStar as faStarSolid } from '@fortawesome/free-solid-svg-icons'
-import { faStar as faStarEmpty } from '@fortawesome/free-regular-svg-icons'
+import { Star } from 'lucide-react'
 import type { Rating } from '@/types/ProductType'
 
 interface StarRateContainerProps {
@@ -13,16 +11,19 @@ export const StarRateContainer = ({ rating }: StarRateContainerProps) => {
   const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0)
 
   return (
-    <div className="mx-4 flex items-center gap-1 py-2 text-yellow-400">
-      <span className="mr-1 text-sm font-medium text-slate-700">{rating.rate.toFixed(1)}</span>
+    <div className="flex items-center gap-[2px] text-yellow-400">
+      <span className="mr-1 text-xs font-medium text-slate-700">{rating.rate.toFixed(1)}</span>
+
       {[...Array(fullStars)].map((_, i) => (
-        <FontAwesomeIcon key={`full-${i}`} icon={faStarSolid} />
+        <Star key={`full-${i}`} className="h-3 w-3 fill-yellow-400 stroke-yellow-400" />
       ))}
-      {hasHalfStar && <FontAwesomeIcon icon={faStarSolid} className="opacity-60" />}
+      {hasHalfStar && <Star className="h-3 w-3 fill-yellow-400/60 stroke-yellow-400/60" />}
+
       {[...Array(emptyStars)].map((_, i) => (
-        <FontAwesomeIcon key={`empty-${i}`} icon={faStarEmpty} />
+        <Star key={`empty-${i}`} className="h-3 w-3 stroke-yellow-400" />
       ))}
-      <span className="ml-1 text-xs text-slate-500">({rating.count})</span>
+
+      <span className="ml-1 text-[10px] text-slate-500">({rating.count})</span>
     </div>
   )
 }
