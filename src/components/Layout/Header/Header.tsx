@@ -6,7 +6,7 @@ import { InputSearch } from '@/components/ui/InputSearch'
 export const Header = () => {
   return (
     <>
-      <header className="sticky top-0 z-10 flex items-end justify-between bg-slate-950 px-9 py-4 text-xl text-slate-200 shadow-xl shadow-slate-400">
+      <header className="sticky top-0 z-10 flex h-auto items-end justify-between bg-slate-950 px-9 py-4 text-xl text-slate-200 shadow-xl shadow-slate-400">
         <Link to="/">
           <h2 className="flex gap-1 font-semibold text-blue-600">
             <Store className="text-white" />
@@ -14,7 +14,9 @@ export const Header = () => {
           </h2>
         </Link>
         <InputSearch />
-        <UserButtons />
+        <div className="mr-10">
+          <UserButtons />
+        </div>
       </header>
     </>
   )
