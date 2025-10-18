@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom'
-import { useCart } from '@/hooks/useCart'
 import { Button } from '@/components/ui/button'
 import { ShoppingBasketIcon, User2Icon } from 'lucide-react'
+import { useCartContext } from '@/hooks/useCartContext'
 
 export const UserButtons = () => {
-  const { quantity } = useCart()
+  const { quantity } = useCartContext()
 
   return (
     <div className="flex items-center gap-5">
