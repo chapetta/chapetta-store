@@ -9,7 +9,7 @@ export const UserButtons = () => {
   return (
     <div className="flex items-center gap-5">
       <Button className="relative px-2">
-        <Link to="/checkout" className="px-2">
+        <Link to="/cart" className="px-2">
           <ShoppingBasketIcon />
         </Link>
         <div className="absolute -top-2 -right-2 inline-flex h-6 w-6 items-center justify-center rounded-full border-2 border-white bg-red-500 font-bold text-white">

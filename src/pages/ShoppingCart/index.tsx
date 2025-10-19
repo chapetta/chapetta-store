@@ -4,8 +4,11 @@ import { useCartContext } from '@/hooks/useCartContext'
 import { Card, CardContent } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
 import { Button } from '@/components/ui/button'
+import { useNavigate } from 'react-router-dom'
 export const ShoppingCart = () => {
   const { cartList, getTotal } = useCartContext()
+
+  const navigate = useNavigate()
 
   return (
     <Card className="mx-auto mt-10 w-full max-w-4xl border-none shadow-lg">
@@ -35,7 +38,10 @@ export const ShoppingCart = () => {
               Valor Total da compra:{' '}
               <span className="font-semibold text-slate-900">{formatCurrency(getTotal())}</span>
             </div>
-            <Button className="px-8 py-5 text-base font-semibold transition-transform duration-100 active:scale-95">
+            <Button
+              className="px-8 py-5 text-base font-semibold transition-transform duration-100 active:scale-95"
+              onClick={() => navigate('/checkout')}
+            >
               Finalizar Compra
             </Button>
           </div>
