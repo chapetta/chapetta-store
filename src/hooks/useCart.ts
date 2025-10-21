@@ -49,5 +49,13 @@ export const useCart = () => {
     return cartList.reduce((acc, item) => acc + item.price * (item.quantity || 0), 0)
   }
 
-  return { cartList, quantity, addToCart, decreaseQuantity, increaseQuantity, getTotal }
+  return {
+    cartList,
+    quantity,
+    addToCart,
+    decreaseQuantity,
+    increaseQuantity,
+    getTotal,
+    setCartList,
+  }
 }

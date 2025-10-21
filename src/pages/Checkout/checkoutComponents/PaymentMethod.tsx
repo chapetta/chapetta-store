@@ -3,8 +3,17 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { Label } from '@/components/ui/label'
 import { useState } from 'react'
 import { CreditCard, Barcode } from 'lucide-react' // ícones shadcn/lucide
+import type { UseFormReturn } from 'react-hook-form'
+import type { formSchema } from '..'
+import { z } from 'zod'
+import { Button } from '@/components/ui/button'
 
-export const PaymentMethod = () => {
+type PaymentMethodPropsType = {
+  form: UseFormReturn<z.infer<typeof formSchema>>
+  handleFinishOrder: (data: z.infer<typeof formSchema>) => void
+}
+
+export const PaymentMethod = ({ form, handleFinishOrder }: PaymentMethodPropsType) => {
   const [selected, setSelected] = useState('boleto')
   const [selectedCard, setSelectedCard] = useState('')
 
@@ -53,20 +62,15 @@ export const PaymentMethod = () => {
         </div>
       )}
 
-      <div className="mt-6 flex justify-end">
-        <button
+      <div className="mt-6 flex justify-start">
+        <Button
+          variant="default"
           type="button"
-          className="hover:bg-muted rounded-md border px-6 py-2 font-medium transition"
-          onClick={() =>
-            alert(
-              selected === 'boleto'
-                ? 'Compra via boleto selecionada!'
-                : `Compra via cartão ${selectedCard || 'não selecionado'}`
-            )
-          }
+          className="cursor-pointer transition-transform duration-100 active:scale-95"
+          onClick={form.handleSubmit(handleFinishOrder)}
         >
-          Comprar
-        </button>
+          Confirmar Pedido
+        </Button>
       </div>
     </Card>
   )

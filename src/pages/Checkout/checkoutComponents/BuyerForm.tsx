@@ -1,9 +1,5 @@
 import { Card } from '@/components/ui/card'
 import { Form, FormField, FormItem, FormMessage, FormControl } from '@/components/ui/form'
-import { validarCPF } from '@/lib/validators/cpf'
-import { useForm } from 'react-hook-form'
-import { z } from 'zod'
-import { zodResolver } from '@hookform/resolvers/zod'
 import { Input } from '@/components/ui/input'
 import {
   Select,
@@ -12,39 +8,15 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
+import { formSchema } from '../../Checkout'
+import { z } from 'zod'
+import type { UseFormReturn } from 'react-hook-form'
 
-const formSchema = z.object({
-  fullName: z.string().min(1, 'Informe seu nome completo'),
-  cpf: z.string().refine((cpf) => validarCPF(cpf), { message: 'CPF inválido' }),
-  email: z.email('E-mail inválido'),
-  telefone: z
-    .string()
-    .regex(/^\+[1-9]\d{1,14}$/, 'Use formato +55 11 99999-9999, sem traços e espaços'),
-  cep: z.string().min(8, 'CEP inválido'),
-  endereco: z.string().min(3, 'Digite seu endereço'),
-  complemento: z.string().optional(),
-  numero: z.string().min(1, 'Digite o número do seu endereço'),
-  cidade: z.string().min(1, 'Digite sua cidade'),
-  estado: z.string().length(2, 'Use a sigla do estado'),
-})
+type BuyerFormProps = {
+  form: UseFormReturn<z.infer<typeof formSchema>>
+}
 
-export const BuyerForm = () => {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      fullName: '',
-      cpf: '',
-      email: '',
-      telefone: '',
-      cep: '',
-      endereco: '',
-      complemento: '',
-      numero: '',
-      cidade: '',
-      estado: '',
-    },
-  })
-
+export const BuyerForm = ({ form }: BuyerFormProps) => {
   const estados = [
     'AC',
     'AL',
@@ -79,7 +51,7 @@ export const BuyerForm = () => {
     <Card className="p-6">
       <h2 className="mb-4 text-lg font-semibold">Informações do Comprador</h2>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit((data) => console.log(data))} className="space-y-4">
+        <form className="space-y-4">
           <div className="grid grid-cols-4 gap-4">
             <FormField
               control={form.control}
