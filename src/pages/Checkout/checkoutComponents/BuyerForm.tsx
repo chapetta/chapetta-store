@@ -202,4 +202,4 @@ export const BuyerForm = ({ form }: BuyerFormProps) => {
       </Form>
     </Card>
   )
-}
+} // dia ocupado
