@@ -1,7 +1,7 @@
-import { CartProvider } from '@/providers/CartProvider'
-import { CategoriesProvider } from '@/providers/CategoryProvider'
-import { ProductsProvider } from '@/providers/ProductsProvider'
-import { Router } from '@/routes'
+import { CartProvider } from '@/shared/state/providers/CartProvider'
+import { CategoriesProvider } from '@/shared/state/providers/CategoryProvider'
+import { ProductsProvider } from '@/shared/state/providers/ProductsProvider'
+import { Router } from '@/app/routes'
 
 function App() {
   return (
