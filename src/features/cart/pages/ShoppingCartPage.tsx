@@ -5,6 +5,7 @@ import { formatCurrency } from '@/shared/utils/format-currency'
 import { useCartContext } from '@/shared/hooks/useCartContext'
 import { CartItemCard } from '../components/CartItemCard'
 import { useNavigate } from 'react-router-dom'
+import type { Product } from '@/shared/types/product'
 export const ShoppingCart = () => {
   const { cartList, getTotal } = useCartContext()
 
@@ -26,7 +27,9 @@ export const ShoppingCart = () => {
           {cartList.length === 0 ? (
             <h2>Seu carrinho está vazio 🛒</h2>
           ) : (
-            cartList.map((product) => <CartItemCard key={`product-${product.id}`} {...product} />)
+            cartList.map((product: Product) => (
+              <CartItemCard key={`product-${product.id}`} {...product} />
+            ))
           )}
         </div>
 
